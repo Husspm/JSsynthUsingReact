@@ -3,13 +3,13 @@ import Line from './Lines.js';
 import Header from './Header.js';
 import {Scale, isMinor, newTime} from './Scale.js';
 import '../styles/App.css';
-let data = {param: delay.feedback};
 import Tone from 'tone';
 import {synth, synth2, delay, notes_array, minorNotes, msTime} from './Synth.js';
 var noteIndex = 0;
 var arrIndex = 0;
 var currArray = notes_array[arrIndex];
-// Tone.Transport.start();
+Tone.Transport.start();
+Tone.Transport.bpm.value = 120;
 Tone.Transport.loop = true;
 Tone.Transport.loopStart = 0;
 Tone.Transport.loopEnd = "4m";
@@ -19,7 +19,7 @@ class App extends Component {
     playNote (){
         synth.volume.input.value = Math.max(Math.random(), 0.8);
         synth2.volume.input.value = Math.max(Math.random(), 0.7);
-        // synth.triggerAttackRelease(notes_array[noteIndex], "16n");
+        synth.triggerAttackRelease(currArray[noteIndex], "8n");
         synth2.triggerAttackRelease(currArray[noteIndex], "4n");
         this.increaseNote();
     }
@@ -39,9 +39,6 @@ class App extends Component {
             noteIndex = 0;
         }
     }
-    controlWet(e){
-        delay.delayTime.value = e.target.value;
-    }
     setTime(){
         this.interval = clearInterval(this.interval);
         this.interval = setInterval(() => this.playNote(), time);
@@ -49,10 +46,10 @@ class App extends Component {
     componentDidMount(){
         this.setTime();
     }
-    // <Scale className = "textHeader" />
     render() {
         return ( 
             <div>
+                <Scale className = "textHeader" />
                 <div className="textHeader">
                     <Line data = {{'param': delay.delayTime, 'name': "Delay Time", 
                 'step' : "0.01", 'type' : 1}}/>
