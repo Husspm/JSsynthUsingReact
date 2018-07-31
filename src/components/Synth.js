@@ -1,5 +1,5 @@
 import Tone from 'tone';
-var msTime = 1500;
+var msTime = 1000;
 var notes_array = [
     ["C4", "E4", "G4", "B3", "D4", "G3", "A3", "C3"],
     ["E3", "D4", "A5", "G5", "C3", "A2", "G2", "A3"]
@@ -19,7 +19,7 @@ var synth = new Tone.Synth({
 }).connect(delay);
 var synth2 = new Tone.Synth({
     oscillator: {
-    type: "triangle4"
+    type: "sawtooth8"
     },
     envelope : {
         attack: 0.81,
@@ -28,5 +28,10 @@ var synth2 = new Tone.Synth({
         release: 0.51
     }
 }).connect(delay);
+var reverb = new Tone.JCReverb(9.5).toMaster();
+reverb.preDelay = 0.5;
+reverb.wet.value = 0.1;
+synth2.connect(reverb);
+// Tone.Master.chain(reverb);
 Tone.Transport.start();
-export {synth, synth2, delay, notes_array, minorNotes, msTime};
+export {synth, synth2, delay, notes_array, minorNotes, msTime, reverb};
