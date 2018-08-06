@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "engines":{
+  "engines": {
     "npm": "5.7.1",
     "node": "9.5.0"
   },
@@ -29,6 +29,7 @@
   "dependencies": {
     "react": "^16.4.1",
     "react-dom": "^16.4.1",
+    "react-router-dom": "^4.3.1",
     "tone": "^0.12.80"
   }
 }

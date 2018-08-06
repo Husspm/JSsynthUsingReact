@@ -1,32 +1,39 @@
-@import url('https://fonts.googleapis.com/css?family=Audiowide');
+@import url('https://fonts.googleapis.com/css?family=Coda');
 
 body {
-    background: black;
+    background: radial-gradient(black, 83%, #27aedb, black);
+    background-size: 2% 50%;
     color: white;
-    font-family: 'Audiowide';
-    font-size: 200%;
+    font-family: 'Coda';
+    font-size: 100%;
+}
+.mainBody{
+  height: auto;
+  padding: 2%;
 }
 h1, h2 {
     color: #27aedb;
+    text-shadow: white 2px 2px 2px;
     text-align: center;
 }
 .slider{
     width: 100%;
 }
-#header{
+.header{
     display: inline-block;
     position: sticky;
     top: 0px;
     text-align: justify;
     background: rgba(255, 255, 255, 0.489);
     transition: cubic-bezier(0.445, 0.05, 0.55, 0.95);
-    transition-property: background, margin, padding;
-    transition-duration: 2s;
+    transition-property: background, margin, padding, color;
+    transition-duration: 1s;
 }
-#header:hover{
+.header:hover{
     margin: 10px;
     padding: 10px;
     background: black;
+    color: white;
 }
 p {
     color: black;
@@ -34,10 +41,14 @@ p {
 }
 .textHeader {
     text-align: center;
-    padding: 10px;
-    border: 12px solid rgba(255, 255, 255, 0.359);
+    background: rgba(0, 0, 0, 0.571);
+    padding: 20px;
+    border: 12px solid rgba(255, 255, 255, 0.297);
     margin: 10%;
     /* height: 100%; */
+}
+li, a {
+  color: white;
 }
 input[type=range] {
     -webkit-appearance: none;
